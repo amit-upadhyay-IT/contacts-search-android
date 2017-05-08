@@ -1,5 +1,7 @@
 package com.amitupadhyay.displaycontacts.utils;
 
+import java.util.ArrayList;
+
 /**
  * Created by aupadhyay on 5/8/17.
  */
