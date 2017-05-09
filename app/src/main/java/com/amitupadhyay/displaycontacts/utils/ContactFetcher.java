@@ -34,7 +34,7 @@ public class ContactFetcher {
                 projectionFields, // the columns to retrieve
                 null, // the selection criteria (none)
                 null, // the selection args (none)
-                null // the sort order (default)
+                Phone.DISPLAY_NAME + " ASC" // the sort order (default), use null for default
         );
 
         Cursor c = cursorLoader.loadInBackground();
