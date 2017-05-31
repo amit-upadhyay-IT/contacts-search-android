@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="activity_vertical_margin_flash" type="dimen" format="float">14.0</item>
+    <item name="activity_horizontal_margin_flash" type="dimen" format="float">14.0</item>
+    <item name="splash_text_margin_flash" type="dimen" format="float">22.0</item>
+</resources>
