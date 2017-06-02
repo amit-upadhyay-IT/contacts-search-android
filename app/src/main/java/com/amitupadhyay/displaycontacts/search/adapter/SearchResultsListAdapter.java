@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.amitupadhyay.displaycontacts.R;
 import com.amitupadhyay.displaycontacts.utils.Contact;
@@ -78,16 +77,29 @@ public class SearchResultsListAdapter extends RecyclerView.Adapter<SearchResults
 
         final Contact contactSuggestion = mDataSet.get(position);
         holder.mContactName.setText(contactSuggestion.getName());
-        holder.mContactNumber.setText(contactSuggestion.getNumbers().toString());
-        holder.mEmail.setText(contactSuggestion.getEmails().toString());
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Toast.makeText(context, contactSuggestion.getName(), Toast.LENGTH_SHORT).show();
+        String totalNumbers = "";
+        // to join the all numbers
+        for (int i = 0; i < contactSuggestion.getNumbers().size(); ++i)
+        {
+            totalNumbers += contactSuggestion.getNumbers().get(i).number;
 
-            }
-        });
+            if ((i != contactSuggestion.getNumbers().size()-1) && (contactSuggestion.getNumbers().size() > 1))
+                totalNumbers += ", ";
+        }
+
+        String totalEmails = "";
+        // to join all emails
+        for (int i = 0; i < contactSuggestion.getEmails().size(); ++i)
+        {
+            totalEmails += contactSuggestion.getEmails().get(i).address;
+
+            if ((i != contactSuggestion.getEmails().size()-1) && (contactSuggestion.getEmails().size() > 1))
+                totalEmails += ", ";
+        }
+
+        holder.mContactNumber.setText(totalNumbers);
+        holder.mEmail.setText(totalEmails);
 
 
         if(mLastAnimatedItemPosition < position){
