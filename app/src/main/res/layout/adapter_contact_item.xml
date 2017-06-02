@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+app:cardUseCompatPadding="true">
+
+<LinearLayout
+    android:id="@+id/text_container"
     android:layout_width="match_parent"
-    android:padding="3dp"
-    android:layout_height="wrap_content" >
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Bob Marley"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="18sp"
+        tools:text="contact name" />
 
     <TextView
         android:id="@+id/tvPhone"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tvName"
-        android:text="(626) 336-5889"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        tools:text="#000000" />
 
     <TextView
         android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#575757"
-        android:layout_alignBaseline="@+id/tvPhone"
-        android:layout_alignBottom="@+id/tvPhone"
-        android:paddingLeft="5dp"
-        android:layout_toRightOf="@+id/tvPhone"
-        android:layout_alignParentRight="true"
-        android:text="bob@fake.com"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        tools:text="email" />
 
-</RelativeLayout>
+</LinearLayout>
+</android.support.v7.widget.CardView>

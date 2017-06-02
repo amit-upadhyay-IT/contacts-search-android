@@ -1,6 +1,7 @@
 package com.amitupadhyay.displaycontacts;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -11,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.amitupadhyay.displaycontacts.search.SearchActivity;
+import com.amitupadhyay.displaycontacts.search.util.Constants;
 import com.amitupadhyay.displaycontacts.utils.Contact;
 import com.amitupadhyay.displaycontacts.utils.ContactFetcher;
 import com.amitupadhyay.displaycontacts.utils.ContactsRecyclerAdapter;
@@ -46,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
     {
         contactsRV = (RecyclerView) findViewById(R.id.contactsRecyclerView);
         contactsList = new ContactFetcher(this).fetchAll();
+
+        Constants.mContactList = contactsList;
+
         ContactsRecyclerAdapter recyclerAdapter = new ContactsRecyclerAdapter(contactsList, MainActivity.this, R.layout.adapter_contact_item);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         contactsRV.setLayoutManager(llm);
@@ -88,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.menu_search)
         {
-            //startActivity(new Intent(MainActivity.this, SearchActivity.class));
+            startActivity(new Intent(MainActivity.this, SearchActivity.class));
         }
         return true;
     }
