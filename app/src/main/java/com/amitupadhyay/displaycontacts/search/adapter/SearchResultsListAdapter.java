@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amitupadhyay.displaycontacts.R;
 import com.amitupadhyay.displaycontacts.utils.Contact;
@@ -24,7 +25,7 @@ public class SearchResultsListAdapter extends RecyclerView.Adapter<SearchResults
 
     private Context context;
 
-    public SearchResultsListAdapter(int[] colors_set, Context context) {
+    public SearchResultsListAdapter(Context context) {
         this.context = context;
     }
 
@@ -100,6 +101,14 @@ public class SearchResultsListAdapter extends RecyclerView.Adapter<SearchResults
 
         holder.mContactNumber.setText(totalNumbers);
         holder.mEmail.setText(totalEmails);
+
+        holder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Toast.makeText(context, ""+contactSuggestion.getNumbers().get(0).number, Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         if(mLastAnimatedItemPosition < position){

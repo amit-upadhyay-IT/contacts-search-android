@@ -257,7 +257,7 @@ public class SlidingSearchResultsExampleFragment extends BaseExampleFragment {
     }
 
     private void setupResultsList() {
-        mSearchResultsAdapter = new SearchResultsListAdapter();
+        mSearchResultsAdapter = new SearchResultsListAdapter(getActivity());
         mSearchResultsList.setAdapter(mSearchResultsAdapter);
         mSearchResultsList.setLayoutManager(new LinearLayoutManager(getContext()));
     }
