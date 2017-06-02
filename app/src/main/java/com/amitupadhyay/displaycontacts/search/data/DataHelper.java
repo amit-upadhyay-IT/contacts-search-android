@@ -5,6 +5,7 @@ import android.widget.Filter;
 import android.widget.Toast;
 
 import com.amitupadhyay.displaycontacts.search.util.Constants;
+import com.amitupadhyay.displaycontacts.utils.Contact;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,12 +36,12 @@ public class DataHelper {
         return theContactSuggestion;
     }
 
-    private static List<ContactsWrapper> sContactWrappers = new ArrayList<>();
+    private static List<Contact> sContactWrappers = new ArrayList<>();
 
     private static List<ContactsSuggestion> sContactsSuggestion = setNamesIntoContactsSuggestion();
 
     public interface OnFindContactsListener {
-        void onResults(List<ContactsWrapper> results);
+        void onResults(List<Contact> results);
     }
 
     public interface OnFindSuggestionsListener {
@@ -130,11 +131,11 @@ public class DataHelper {
             protected FilterResults performFiltering(CharSequence constraint) {
 
 
-                List<ContactsWrapper> suggestionList = new ArrayList<>();
+                List<Contact> suggestionList = new ArrayList<>();
 
                 if (!(constraint == null || constraint.length() == 0)) {
 
-                    for (ContactsWrapper color : sContactWrappers) {
+                    for (Contact color : sContactWrappers) {
                         if (color.getName().toUpperCase()
                                 .startsWith(constraint.toString().toUpperCase())) {
 
@@ -155,7 +156,7 @@ public class DataHelper {
             protected void publishResults(CharSequence constraint, FilterResults results) {
 
                 if (listener != null) {
-                    listener.onResults((List<ContactsWrapper>) results.values);
+                    listener.onResults((List<Contact>) results.values);
                 }
             }
         }.filter(query);
@@ -174,12 +175,13 @@ public class DataHelper {
                 {
                     try {
 
-                        //sContactWrappers.add(i, Constants.mContactList.get(i));
+                        sContactWrappers.add(i, Constants.mContactList.get(i));
 
-                        sContactWrappers.get(i).id = Constants.mContactList.get(i).id;
+/*                        sContactWrappers.get(i).id = Constants.mContactList.get(i).id;
                         sContactWrappers.get(i).name = Constants.mContactList.get(i).name;
                         sContactWrappers.get(i).emails = Constants.mContactList.get(i).emails;
-                        sContactWrappers.get(i).numbers = Constants.mContactList.get(i).numbers;
+                        sContactWrappers.get(i).numbers = Constants.mContactList.get(i).numbers;*/
+
                     }catch (Exception e)
                     {
                         Toast.makeText(context, ""+e.toString(), Toast.LENGTH_SHORT).show();

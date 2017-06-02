@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amitupadhyay.displaycontacts.R;
-import com.amitupadhyay.displaycontacts.search.data.ContactsWrapper;
+import com.amitupadhyay.displaycontacts.utils.Contact;
 import com.arlib.floatingsearchview.util.Util;
 
 import java.util.ArrayList;
@@ -32,12 +32,12 @@ public class SearchResultsListAdapter extends RecyclerView.Adapter<SearchResults
     public SearchResultsListAdapter() {
     }
 
-    private List<ContactsWrapper> mDataSet = new ArrayList<>();
+    private List<Contact> mDataSet = new ArrayList<>();
 
     private int mLastAnimatedItemPosition = -1;
 
     public interface OnItemClickListener{
-        void onClick(ContactsWrapper colorWrapper);
+        void onClick(Contact colorWrapper);
     }
 
     private OnItemClickListener mItemsOnClickListener;
@@ -57,7 +57,7 @@ public class SearchResultsListAdapter extends RecyclerView.Adapter<SearchResults
         }
     }
 
-    public void swapData(List<ContactsWrapper> mNewDataSet) {
+    public void swapData(List<Contact> mNewDataSet) {
         mDataSet = mNewDataSet;
         notifyDataSetChanged();
     }
@@ -76,7 +76,7 @@ public class SearchResultsListAdapter extends RecyclerView.Adapter<SearchResults
     @Override
     public void onBindViewHolder(SearchResultsListAdapter.ViewHolder holder, final int position) {
 
-        final ContactsWrapper contactSuggestion = mDataSet.get(position);
+        final Contact contactSuggestion = mDataSet.get(position);
         holder.mContactName.setText(contactSuggestion.getName());
         holder.mContactNumber.setText(contactSuggestion.getNumbers().toString());
         holder.mEmail.setText(contactSuggestion.getEmails().toString());

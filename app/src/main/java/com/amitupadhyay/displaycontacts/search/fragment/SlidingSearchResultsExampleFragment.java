@@ -21,8 +21,8 @@ import android.widget.Toast;
 import com.amitupadhyay.displaycontacts.R;
 import com.amitupadhyay.displaycontacts.search.adapter.SearchResultsListAdapter;
 import com.amitupadhyay.displaycontacts.search.data.ContactsSuggestion;
-import com.amitupadhyay.displaycontacts.search.data.ContactsWrapper;
 import com.amitupadhyay.displaycontacts.search.data.DataHelper;
+import com.amitupadhyay.displaycontacts.utils.Contact;
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.SearchSuggestionsAdapter;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
@@ -111,14 +111,12 @@ public class SlidingSearchResultsExampleFragment extends BaseExampleFragment {
             @Override
             public void onSuggestionClicked(final SearchSuggestion searchSuggestion) {
 
-                Toast.makeText(getActivity(), ""+searchSuggestion.toString(), Toast.LENGTH_SHORT).show();
-
                 ContactsSuggestion contactSuggestion = (ContactsSuggestion) searchSuggestion;
                 DataHelper.findContacts(getActivity(), contactSuggestion.getBody(),
                         new DataHelper.OnFindContactsListener() {
 
                             @Override
-                            public void onResults(List<ContactsWrapper> results) {
+                            public void onResults(List<Contact> results) {
                                 mSearchResultsAdapter.swapData(results);
                             }
 
@@ -136,7 +134,7 @@ public class SlidingSearchResultsExampleFragment extends BaseExampleFragment {
                         new DataHelper.OnFindContactsListener() {
 
                             @Override
-                            public void onResults(List<ContactsWrapper> results) {
+                            public void onResults(List<Contact> results) {
                                 mSearchResultsAdapter.swapData(results);
                             }
 

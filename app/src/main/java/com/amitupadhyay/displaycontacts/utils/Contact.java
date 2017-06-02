@@ -1,12 +1,15 @@
 package com.amitupadhyay.displaycontacts.utils;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 /**
  * Created by aupadhyay on 5/8/17.
  */
 
-public class Contact {
+public class Contact implements Parcelable {
     public String id;
     public String name;
     public ArrayList<ContactEmail> emails;
@@ -18,6 +21,71 @@ public class Contact {
         this.emails = new ArrayList<ContactEmail>();
         this.numbers = new ArrayList<ContactPhone>();
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<ContactEmail> getEmails() {
+        return emails;
+    }
+
+    public void setEmails(ArrayList<ContactEmail> emails) {
+        this.emails = emails;
+    }
+
+    public ArrayList<ContactPhone> getNumbers() {
+        return numbers;
+    }
+
+    public void setNumbers(ArrayList<ContactPhone> numbers) {
+        this.numbers = numbers;
+    }
+
+    public Contact()
+    {
+
+    }
+
+    private Contact(Parcel in)
+    {
+        id = in.readString();
+        name = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+    }
+
+    public static final Creator<Contact> CREATOR = new Creator<Contact>() {
+        @Override
+        public Contact createFromParcel(Parcel in) {
+            return new Contact(in);
+        }
+
+        @Override
+        public Contact[] newArray(int size) {
+            return new Contact[size];
+        }
+    };
 
     @Override
     public String toString() {
