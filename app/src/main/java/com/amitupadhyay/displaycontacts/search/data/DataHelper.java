@@ -2,6 +2,7 @@ package com.amitupadhyay.displaycontacts.search.data;
 
 import android.content.Context;
 import android.widget.Filter;
+import android.widget.Toast;
 
 import com.amitupadhyay.displaycontacts.search.util.Constants;
 
@@ -166,14 +167,28 @@ public class DataHelper {
 
         if (sContactWrappers.isEmpty()) {
 
-            // fill contactWrapper using Constants.
-            for (int i = 0; i < Constants.mContactList.size(); ++i)
+            if (Constants.mContactList.get(0).name != null)
             {
-                sContactWrappers.get(i).id = Constants.mContactList.get(i).id;
-                sContactWrappers.get(i).name = Constants.mContactList.get(i).name;
-                sContactWrappers.get(i).emails = Constants.mContactList.get(i).emails;
-                sContactWrappers.get(i).numbers = Constants.mContactList.get(i).numbers;
+                // fill contactWrapper using Constants.
+                for (int i = 0; i < Constants.mContactList.size(); ++i)
+                {
+                    try {
+
+                        //sContactWrappers.add(i, Constants.mContactList.get(i));
+
+                        sContactWrappers.get(i).id = Constants.mContactList.get(i).id;
+                        sContactWrappers.get(i).name = Constants.mContactList.get(i).name;
+                        sContactWrappers.get(i).emails = Constants.mContactList.get(i).emails;
+                        sContactWrappers.get(i).numbers = Constants.mContactList.get(i).numbers;
+                    }catch (Exception e)
+                    {
+                        Toast.makeText(context, ""+e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+
+                }
             }
+            else
+                Toast.makeText(context, "Something is null", Toast.LENGTH_SHORT).show();
         }
     }
 }

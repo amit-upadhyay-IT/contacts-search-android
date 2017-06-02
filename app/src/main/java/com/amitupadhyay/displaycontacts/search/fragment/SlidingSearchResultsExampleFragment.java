@@ -111,6 +111,8 @@ public class SlidingSearchResultsExampleFragment extends BaseExampleFragment {
             @Override
             public void onSuggestionClicked(final SearchSuggestion searchSuggestion) {
 
+                Toast.makeText(getActivity(), ""+searchSuggestion.toString(), Toast.LENGTH_SHORT).show();
+
                 ContactsSuggestion contactSuggestion = (ContactsSuggestion) searchSuggestion;
                 DataHelper.findContacts(getActivity(), contactSuggestion.getBody(),
                         new DataHelper.OnFindContactsListener() {
