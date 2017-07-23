@@ -13,6 +13,8 @@ apply plugin: 'com.android.library'
 
 5) To request permissions you can use this code:
 
+        public static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
+
         @Override
         public void onRequestPermissionsResult(int requestCode,
                                                String permissions[], int[] grantResults) {
